@@ -1,0 +1,79 @@
+<div id="rackResultScreen">
+    <div class="gameScoreArea" ng-click="changeDisplayType()">
+        <div>
+            <span ng-show="game.curPlayerIdx == 0">*</span>
+            <span>{{game.players[0].name}}</span>
+            <span>{{game.score[0]}}</span>
+            <span>:</span>
+            <span>{{game.score[1]}}</span>
+            <span>{{game.players[1].name}}</span>
+            <span ng-show="game.curPlayerIdx == 1">*</span>
+        </div>
+    </div>
+
+    <div class="rackTitleArea">
+        <span class="rackNo">Rack # {{rack.number}} Results:</span>
+    </div>
+
+    <div class="rackResultArea">
+        <table class="fullScreenTable">
+            <tr>
+                <td>{{game.players[0].name}}:</td>
+                <td><input type="number" min="0" max="10" ng-model="pointsMade[0]"></td>
+            </tr>
+            <tr>
+                <td>Innings:</td>
+                <td><input type="number" min="0" max="50"  ng-model="rack.inningNumber"></td>
+            </tr>
+            <tr>
+                <td>Dead balls:</td>
+                <td><input type="number" min="0" max="10" ng-model="dead"></td>
+            </tr>
+            <tr>
+                <td>{{game.players[1].name}}:</td>
+                <td><input type="number" min="0" max="10" ng-model="pointsMade[1]"></td>
+            </tr>
+        </table>
+    </div>
+    <div ng-show="breakAndRun()" class="breakAndRun">
+        Break And Run
+    </div>
+
+    <div ng-show="game.isOver()">
+    <div class="gameResultArea">
+        <div>{{game.getWinner().name}} wins the game</div>
+        <div>Match score is ({{game.getMatchScorePoints(0)}} / {{game.getMatchScorePoints(1)}})</div>
+    </div>
+
+    <table class="gameStats">
+        <tr>
+            <th></th>
+            <th>{{game.players[0].name}}</th>
+            <th>{{game.players[1].name}}</th>
+        </tr>
+        <tr>
+            <td>Match time</td>
+            <td colspan="2">{{getTotalTime()}}</td>
+        </tr>
+        <tr>
+            <td>Total innings</td>
+            <td colspan="2">{{game.totalInnings}}</td>
+        </tr>
+        <tr>
+            <td>Defensive shots</td>
+            <td>{{game.defensiveShots[0]}}</td>
+            <td>{{game.defensiveShots[1]}}</td>
+        </tr>
+        <tr>
+            <td>Avg balls/inning</td>
+            <td>{{getAvgBallPerInning(0) | number:1}}</td>
+            <td>{{getAvgBallPerInning(1) | number:1}}</td>
+        </tr>
+    </table>
+    </div>
+
+    <div>
+        <span class="doneBtn" ng-click="next()" ng-show="isValid()">Next</span>
+        <span class="editRackBtn" ng-click="editRack()">Edit</span>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="matchSetup">
+<table class="fullScreenTable">
+    <tr>
+        <td>Name</td>
+        <td><input type="text" ng-model="game.players[0].name" maxlength="15"></td>
+    </tr>
+    <tr>
+        <td>Handicap</td>
+        <td>
+            <input type="number" min="1" max="9" ng-model="game.players[0].handicap">
+        </td>
+    </tr>
+    <tr>
+        <td>Points to Win</td>
+        <td>
+            {{game.pointsToWin[game.players[0].handicap]}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="1">vs</td>
+        <td><span style="font-size: 20px;" ng-click="swapPlayers()">&#x21c5;</span></td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td><input type="text" ng-model="game.players[1].name"  maxlength="15"></td>
+    </tr>
+    <tr>
+        <td>Handicap</td>
+        <td>
+            <input type="number" min="1" max="9" ng-model="game.players[1].handicap">
+        </td>
+    </tr>
+    <tr>
+        <td>Points to Win</td>
+        <td>
+            {{game.pointsToWin[game.players[1].handicap]}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><hr/></td>
+    </tr>
+</table>
+
+<div style="margin-top: 50px">
+    <span class="bigBlueBtn" ng-click="startGame()">Start Game</span>
+</div>
+</div>

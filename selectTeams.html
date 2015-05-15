@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" ng-app="apaApp">
+<head>
+    <meta charset="utf-8">
+    <title>APA</title>
+    <script src="resources/lib/angular.min.js"></script>
+    <script src="resources/js/controllers.js"></script>
+</head>
+<body ng-controller="teamController">
+<select ng-model="selTeam1" size="10">
+    <option value="" disabled selected>Select a team</option>
+    <option ng-repeat="team in teams" value="{{team.id}}">{{team.name}}</option>
+</select>
+<span>Team {{selTeam1}} is selected</span>
+</body>
+</html>

@@ -1,0 +1,213 @@
+@myBlue: #2e13e9;
+a {
+  text-decoration: none;
+}
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+input {
+  color: #000000;
+}
+.view {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.apalogo {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  div {
+    margin-top: 20px;
+  }
+}
+.divBtn {
+  display: block;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.bigBtn:extend(.divBtn) {
+  font-size: 24px;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+}
+
+.bigBlueBtn:extend(.bigBtn) {
+  border: 1px solid #140e66;
+  background-color: @myBlue;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.matchSetup {
+  margin: 30px 10px 0px 10px;
+}
+.fullScreenTable {
+  width: 100%;
+  text-align: left;
+  td {
+    padding-bottom: 10px;
+  }
+  input {
+    color: black;
+  }
+  input[type='text'] {
+    width: 100%;
+  }
+}
+
+.gameScoreArea {
+  background-color: darkgreen;
+  font-size: 24px;
+}
+.gameScoreSmall {
+  font-size: 14px;
+}
+.rackTitleArea {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+
+.ball {
+  width: 60px;
+  line-height: 60px;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.ball-selected {
+  opacity: 0.3;
+}
+.ball-gone {
+  opacity: 0.7;
+  text-decoration: line-through;
+  font-weight: bold;
+}
+.ball1:extend(.ball) {
+  color: #000000;
+  background-color: #ffff13;
+}
+.ball2:extend(.ball) {
+  background-color: #2e13e9;
+}
+.ball3:extend(.ball) {
+  background-color: #ff0000;
+}
+.ball4:extend(.ball) {
+  background-color: #800080;
+}
+.ball5:extend(.ball) {
+  background-color: #ff7214;
+}
+.ball6:extend(.ball) {
+  background-color: #107f34;
+}
+.ball7:extend(.ball) {
+  background-color: #700000;
+}
+.ball8:extend(.ball) {
+  background-color: #3a3a3a;
+}
+.ball9:extend(.ball) {
+  color: #000000;
+  background-color: #efef13;
+  background: linear-gradient(white 50%, #efef13 50%);
+  background-size: 100% 40%;
+  background-repeat: repeat-y;
+}
+.btnScratchDefense:extend(.ball) {
+  width: 88px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.doneBtn:extend(.bigBtn) {
+  background-color: green;
+  border: 1px solid white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+.undoBtn:extend(.bigBtn) {
+  background-color: #c2b261;
+  color: black;
+  border: 1px solid white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.footer {
+  font-size: 10px;
+  font-style: italic;
+  bottom : 2px;
+  height : 20px;
+  margin-top : 40px;
+  text-align: center;
+  vertical-align: middle;
+  position:fixed;
+  width:100%;
+}
+
+.rackResultArea {
+  margin: 30px 10px 0px 10px;
+}
+
+.gameResultArea {
+  font-size: 18px;
+  color: red;
+}
+
+.gameStats {
+  margin: 10px auto;
+  th,td {
+    padding: 3px;
+  }
+  th {
+    border-bottom: 1px solid #ffffff;
+  }
+}
+
+.breakAndRun {
+  color: #ff0000;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.overrideBall {
+  div:nth-of-type(1) {
+    font-size: 40px;
+    border-bottom: 1px solid #ffffff;
+  }
+  div:nth-of-type(2) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}
+
+.overridePBtn:extend(.doneBtn) {
+  background-color: green;
+}
+.overrideDBtn:extend(.doneBtn) {
+  background-color: #8b4513;
+}
+.overrideABtn:extend(.doneBtn) {
+  background-color: @myBlue;
+}
+.overrideCloseBtn:extend(.doneBtn) {
+  background-color: #ff0000;;
+}
+.editRackBtn:extend(.doneBtn) {
+  background-color: #c2b261;
+}

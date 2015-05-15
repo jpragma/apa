@@ -1,0 +1,53 @@
+<div id="rackScreen">
+    <div class="gameScoreArea" ng-click="changeDisplayType()">
+        <div>
+            <span ng-show="game.curPlayerIdx == 0">*</span>
+            <span>{{game.players[0].name}}</span>
+            <span ng-show="scoreDisplayType == 0">{{game.score[0]}}</span>
+            <span ng-show="scoreDisplayType == 1">{{game.score[0] - game.ptsToWin(0)}}</span>
+            <span ng-show="scoreDisplayType == 2" class="gameScoreSmall">{{game.score[0]}}/{{game.ptsToWin(0)}}</span>
+            <span>:</span>
+            <span ng-show="scoreDisplayType == 0">{{game.score[1]}}</span>
+            <span ng-show="scoreDisplayType == 1">{{game.score[1] - game.ptsToWin(1)}}</span>
+            <span ng-show="scoreDisplayType == 2" class="gameScoreSmall">{{game.score[1]}}/{{game.ptsToWin(1)}}</span>
+            <span>{{game.players[1].name}}</span>
+            <span ng-show="game.curPlayerIdx == 1">*</span>
+        </div>
+
+    </div>
+    <div>
+        <span>Defensive Shots: {{game.defensiveShots[0]}} : {{game.defensiveShots[1]}}</span>
+    </div>
+    <div class="rackTitleArea">
+        <span class="rackNo">Rack # {{rack.number}}</span>
+        <span class="inningNo">Inning # {{rack.inningNumber}}</span>
+    </div>
+
+    <div ng-show="!overrideMode">
+        <div>
+            <span ng-repeat="idx in [1, 2, 3]" ng-class="getBallSelectClass(idx)" ng-click="toggleBallSelect(idx)">{{getBallText(idx)}}</span>
+        </div>
+        <div>
+            <span ng-repeat="idx in [4, 5, 6]" ng-class="getBallSelectClass(idx)" ng-click="toggleBallSelect(idx)">{{getBallText(idx)}}</span>
+        </div>
+        <div>
+            <span ng-repeat="idx in [7, 8, 9]" ng-class="getBallSelectClass(idx)" ng-click="toggleBallSelect(idx)">{{getBallText(idx)}}</span>
+        </div>
+        <div>
+            <span ng-class="getScratchBtnClass()" ng-click="scratch=!scratch">Scratch</span>
+            <span ng-class="getDefenseBtnClass()" ng-click="defense=!defense">Defense</span>
+        </div>
+        <span class="doneBtn" ng-click="done()">Done</span>
+        <span class="undoBtn" ng-show="rack.commands.length > 0" ng-click="undo()">Undo</span>
+    </div>
+
+    <div ng-show="overrideMode" class="overrideBall">
+        <div>Edit</div>
+        <div class="ball{{overrideBall.idx}}">{{overrideBall.idx}}</div>
+        <span class="overridePBtn" ng-style="getBtnStyleSelected(1)" ng-click="updateBall(overrideBall.idx, 1)">{{game.players[0].name}}</span>
+        <span class="overridePBtn" ng-style="getBtnStyleSelected(2)" ng-click="updateBall(overrideBall.idx, 2)">{{game.players[1].name}}</span>
+        <span class="overrideDBtn" ng-style="getBtnStyleSelected(99)" ng-click="updateBall(overrideBall.idx, 99)" ng-show="!(overrideBall.idx == 9)">Dead</span>
+        <span class="overrideABtn" ng-click="updateBall(overrideBall.idx, 0)">Available</span>
+        <span class="overrideCloseBtn" ng-click="overrideMode=false">Close</span>
+    </div>
+</div>
