@@ -208,3 +208,24 @@ apaApp.controller('teamController', function ($scope, $http) {
         $scope.teams = data;
     });
 });
+
+apaApp.controller('DrawTableController', function ($scope, $location, $http) {
+
+    $scope.owner = 'b899899f-6106-4790-a244-d68266335f53';
+    $scope.forks = [];
+
+    $scope.forkLayout = function () {
+        $http.post('http://api.drawtable.com/fork', {_id: $scope.curId, owner: $scope.owner})
+            .success(function (data) {
+                var newId = data._id;
+                $scope.forks.push({from: $scope.curId, to: newId});
+                $scope.curId = newId;
+            }).error(function(data) {
+                console.log(data);
+            });
+    };
+
+    $scope.showLayout = function (id) {
+        document.getElementById('layout').src = "http://www.drawtable.com/" + id;
+    };
+});

@@ -1,5 +1,5 @@
 <div id="rackResultScreen">
-    <div class="gameScoreArea" ng-click="changeDisplayType()">
+    <div class="gameScoreArea" ng-click="changeDisplayType()" on-long-press="game.flipPlayers()">
         <div>
             <span ng-show="game.curPlayerIdx == 0">*</span>
             <span>{{game.players[0].name}}</span>

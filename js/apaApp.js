@@ -11,7 +11,7 @@ apaApp.directive('onLongPress', function ($timeout) {
                             $scope.$eval($attrs.onLongPress)
                         });
                     }
-                }, 600);
+                }, 2000);
             });
             $elm.bind('touchend', function (evt) {
                 $scope.longPress = false;
@@ -83,7 +83,7 @@ var MissedCommand = function(game, defense) {
             this.inningAdded = true;
         }
         this.curPlayerIdx = game.curPlayerIdx;
-        game.curPlayerIdx = (game.curPlayerIdx * -1) + 1; // flip players
+        game.flipPlayers();
         // Mark Dead Balls
         this.deadBalls = rack.thisInningMadeBalls();
         for (var i=0; i<this.deadBalls.length; i++) {
@@ -134,6 +134,7 @@ apaApp.config(function($routeProvider){
         when('/9BallGameSetup', {templateUrl: '9bGameSetup.html', controller: '9bGameSetupController'}).
         when('/9bRack', {templateUrl: '9bRack.html', controller: '9bRackController'}).
         when('/9bResult', {templateUrl: '9bResult.html', controller: '9bResultController'}).
+        when('/drawTable', {templateUrl: 'drawTable.html', controller: 'DrawTableController'}).
         when('/', {templateUrl: 'splash.html'}).
         otherwise({redirectTo: '/'});
 });
@@ -216,6 +217,10 @@ apaApp.factory('Game9B', function() {
         };
         rack.breakerIdx = game.curPlayerIdx;
         game.curRack = rack;
+    };
+
+    game.flipPlayers = function() {
+        game.curPlayerIdx = (game.curPlayerIdx * -1) + 1;
     };
 
     return game;
