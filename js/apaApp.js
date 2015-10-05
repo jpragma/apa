@@ -135,6 +135,7 @@ apaApp.config(function($routeProvider){
         when('/9bRack', {templateUrl: '9bRack.html', controller: '9bRackController'}).
         when('/9bResult', {templateUrl: '9bResult.html', controller: '9bResultController'}).
         when('/drawTable', {templateUrl: 'drawTable.html', controller: 'DrawTableController'}).
+        when('/lineup', {templateUrl: 'lineup.html', controller: 'lineupController'}).
         when('/', {templateUrl: 'splash.html'}).
         otherwise({redirectTo: '/'});
 });

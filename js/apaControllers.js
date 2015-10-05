@@ -229,3 +229,36 @@ apaApp.controller('DrawTableController', function ($scope, $location, $http) {
         document.getElementById('layout').src = "http://www.drawtable.com/" + id;
     };
 });
+
+apaApp.controller('lineupController', function ($scope, $http) {
+    $scope.lineup = [];
+    $http.get('roster.json').success(function (data) {
+        $scope.teams = data;
+    });
+
+    $scope.selectTeam = function() {
+        var team = $scope.selectedTeam;
+        var teamLineUp = {team: team.teamName, date: new Date(), players: []};
+        $scope.lineup.push(teamLineUp);
+        for (var i = 0; i < team.players.length; i++) {
+            var player = team.players[i];
+            player.absent = false;
+            player.playing = [false, false];
+            teamLineUp.players.push(player);
+        }
+    };
+    $scope.getLineUpTotal = function (lineup) {
+        var result = [0,0];
+        for (var i=0; i<lineup.players.length; i++) {
+            var player = lineup.players[i];
+            if (!player.absent) {
+                if (player.playing[0])
+                    result[0] += player.sl[0];
+                if (player.playing[1])
+                    result[1] += player.sl[1];
+
+            }
+        }
+        return result;
+    };
+});

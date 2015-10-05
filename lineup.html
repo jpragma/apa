@@ -1,0 +1,23 @@
+<div>
+    <div style="color: #000000; margin-bottom: 20px">
+        <select ng-options="team.teamName for team in teams" ng-model="selectedTeam"></select>
+        <button ng-click="selectTeam()">Add</button>
+    </div>
+    <div ng-repeat="l in lineup" style="margin-bottom: 20px">
+        <table border="1">
+            <tr><th>Name</th><th>SL</th><th>Absent</th><th>8 Ball</th><th>9 Ball</th></tr>
+            <tr ng-repeat="pl in l.players">
+                <td>{{pl.name}}</td>
+                <td>8B:{{pl.sl[0]}} / 9B:{{pl.sl[1]}}</td>
+                <td><input type="checkbox" ng-model="pl.absent"></td>
+                <td><input type="checkbox" ng-model="pl.playing[0]" ng-disabled="pl.absent"></td>
+                <td><input type="checkbox" ng-model="pl.playing[1]" ng-disabled="pl.absent"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Total:</td>
+                <td>{{getLineUpTotal(l)[0]}}</td>
+                <td>{{getLineUpTotal(l)[1]}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

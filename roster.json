@@ -1,0 +1,25 @@
+[
+    {"teamName":"RacknRoll",
+        "players":[
+            {"name":"Isaac", "sl":[5, 5]},
+            {"name":"Ami", "sl":[5, 4]},
+            {"name":"Thomas", "sl":[5, 5]},
+            {"name":"George", "sl":[7, 7]},
+            {"name":"Jerry", "sl":[4, 4]},
+            {"name":"Mike", "sl":[3, 3]},
+            {"name":"Dave", "sl":[3, 3]}
+        ]
+    },
+    {"teamName":"Slurp&Derp",
+        "players":[
+            {"name":"Trevor", "sl":[5, 5]},
+            {"name":"Jody", "sl":[7, 7]},
+            {"name":"Megan", "sl":[3, 2]},
+            {"name":"Angelo", "sl":[5, 6]},
+            {"name":"Ashley", "sl":[2, 2]},
+            {"name":"Jan", "sl":[3, 3]},
+            {"name":"Cameron", "sl":[3, 3]},
+            {"name":"Vince", "sl":[4, 3]}
+        ]
+    }
+]
