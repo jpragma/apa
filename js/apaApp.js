@@ -153,7 +153,7 @@ apaApp.factory('Game9B', function() {
         [0, 14, 20, 27, 33, 40, 46, 53, 59], // SL 8
         [0, 18, 25, 32, 39, 47, 54, 61, 68] // SL 9
     ];
-    game.players = [{name:'Isaac', handicap: 4}, {name:'Dennis', handicap: 7}];
+    game.players = [{name:'A', handicap: 5}, {name:'B', handicap: 5}];
     game.curPlayerIdx = 0;
 
     game.init = function() {
