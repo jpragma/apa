@@ -1,4 +1,4 @@
-var apaApp = angular.module('apaApp', ['ngRoute','ui.bootstrap']);
+var apaApp = angular.module('apaApp', ['ngRoute','ui.bootstrap', 'LocalStorageModule']);
 apaApp.directive('onLongPress', function ($timeout) {
     return {
         restrict: 'A',
@@ -135,6 +135,7 @@ apaApp.config(function($routeProvider){
         when('/9bRack', {templateUrl: '9bRack.html', controller: '9bRackController'}).
         when('/9bResult', {templateUrl: '9bResult.html', controller: '9bResultController'}).
         when('/drawTable', {templateUrl: 'drawTable.html', controller: 'DrawTableController'}).
+        when('/roster', {templateUrl: 'roster.html', controller: 'rosterController'}).
         when('/lineup', {templateUrl: 'lineup.html', controller: 'lineupController'}).
         when('/', {templateUrl: 'splash.html'}).
         otherwise({redirectTo: '/'});

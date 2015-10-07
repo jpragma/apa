@@ -1,0 +1,20 @@
+<div>
+    <div style="color: #000000; margin-bottom: 20px">
+        <select ng-options="team.teamName for team in roster" ng-model="selectedTeam"></select>
+        <button ng-click="addNewTeam()">New</button><button ng-click="deleteTeam()">Delete</button>
+    </div>
+    <div>
+        <button style="color: #000000;" ng-click="addNewPlayer()">New Player</button>
+        <table border="1">
+            <tr><th>Name</th><th>SL 8</th><th>SL 9</th><th>Action</th></tr>
+            <tr ng-repeat="pl in selectedTeam.players">
+                <td><input type="text" ng-model="pl.name"></td>
+                <td><input type="number" ng-model="pl.sl[0]"></td>
+                <td><input type="number" ng-model="pl.sl[1]"></td>
+                <td><button style="color: #000000;" ng-click="deletePlayer($index)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <span class="doneBtn" ng-click="save()">Save</span>
+</div>

@@ -230,11 +230,50 @@ apaApp.controller('DrawTableController', function ($scope, $location, $http) {
     };
 });
 
-apaApp.controller('lineupController', function ($scope, $http) {
+apaApp.controller('rosterController', function ($scope, $http, localStorageService) {
+    var roster = localStorageService.get('apaRoster');
+    if (roster == null) {
+        $http.get('roster.json').success(function (data) {
+            $scope.roster = data;
+        });
+    } else {
+        $scope.roster = (roster != null) ? roster : [];
+    }
+
+    $scope.addNewTeam = function () {
+        var teamName = prompt("Team name:");
+        if (teamName) {
+            var team = {"teamName": teamName, "players": []};
+            $scope.roster.push(team);
+            $scope.selectedTeam = team;
+        }
+    };
+    $scope.deleteTeam = function () {
+        for (var i=0; i<$scope.roster.length; i++) {
+            if ($scope.roster[i] == $scope.selectedTeam) {
+                if (confirm("Delete " + $scope.selectedTeam.teamName + "?")) {
+                    $scope.roster.splice(i, 1);
+                    $scope.selectedTeam = $scope.roster[0];
+                }
+                break;
+            }
+        }
+    };
+    $scope.addNewPlayer = function () {
+        $scope.selectedTeam.players.push({"name":"<Name>", "sl":[4, 4]})
+    };
+    $scope.deletePlayer = function(idx) {
+        $scope.selectedTeam.players.splice(idx, 1);
+    };
+    $scope.save = function() {
+        localStorageService.set('apaRoster', $scope.roster);
+        alert('Saved');
+    };
+});
+
+apaApp.controller('lineupController', function ($scope, localStorageService) {
     $scope.lineup = [];
-    $http.get('roster.json').success(function (data) {
-        $scope.teams = data;
-    });
+    $scope.teams = localStorageService.get('apaRoster');
 
     $scope.selectTeam = function() {
         var team = $scope.selectedTeam;
