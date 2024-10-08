@@ -47,6 +47,7 @@ input {
 }
 .matchSetup {
   margin: 30px 10px 0px 10px;
+  font-size: 24px;
 }
 .fullScreenTable {
   width: 100%;
@@ -64,7 +65,7 @@ input {
 
 .gameScoreArea {
   background-color: darkgreen;
-  font-size: 24px;
+  font-size: 32px;
 }
 .gameScoreSmall {
   font-size: 14px;
@@ -74,16 +75,23 @@ input {
   margin-bottom: 5px;
   font-size: 24px;
 }
-
+.activePlayerName {
+  font-size: 32px;
+}
+.passivePlayerName {
+  font-size: 24px;
+}
 
 .ball {
-  width: 60px;
-  line-height: 60px;
+  width: 100px;
+  line-height: 100px;
   border: 1px solid #ffffff;
   display: inline-block;
   color: #ffffff;
   cursor: pointer;
   vertical-align: middle;
+  font-weight: bold;
+  font-size: 32px;
 }
 .ball-selected {
   opacity: 0.3;
@@ -126,7 +134,8 @@ input {
   background-repeat: repeat-y;
 }
 .btnScratchDefense:extend(.ball) {
-  width: 88px;
+  font-size: 24px;
+  width: 148px;
   background-color: #ffffff;
   color: #000000;
 }
@@ -136,7 +145,7 @@ input {
   border: 1px solid white;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .undoBtn:extend(.bigBtn) {
@@ -145,7 +154,7 @@ input {
   border: 1px solid white;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .footer {
@@ -162,10 +171,11 @@ input {
 
 .rackResultArea {
   margin: 30px 10px 0px 10px;
+  font-size: 24px;
 }
 
 .gameResultArea {
-  font-size: 18px;
+  font-size: 24px;
   color: red;
 }
 
@@ -181,8 +191,18 @@ input {
 
 .breakAndRun {
   color: #ff0000;
-  font-size: 15px;
+  font-size: 32px;
   font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .overrideBall {

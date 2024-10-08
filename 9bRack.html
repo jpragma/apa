@@ -2,7 +2,7 @@
     <div class="gameScoreArea" ng-click="changeDisplayType()" on-long-press="game.flipPlayers()">
         <div>
             <span ng-show="game.curPlayerIdx == 0">*</span>
-            <span>{{game.players[0].name}}</span>
+            <span ng-class="game.curPlayerIdx == 0 ? 'activePlayerName': 'passivePlayerName'">{{game.players[0].name}}</span>
             <span ng-show="scoreDisplayType == 0">{{game.score[0]}}</span>
             <span ng-show="scoreDisplayType == 1">{{game.score[0] - game.ptsToWin(0)}}</span>
             <span ng-show="scoreDisplayType == 2" class="gameScoreSmall">{{game.score[0]}}/{{game.ptsToWin(0)}}</span>
@@ -10,7 +10,7 @@
             <span ng-show="scoreDisplayType == 0">{{game.score[1]}}</span>
             <span ng-show="scoreDisplayType == 1">{{game.score[1] - game.ptsToWin(1)}}</span>
             <span ng-show="scoreDisplayType == 2" class="gameScoreSmall">{{game.score[1]}}/{{game.ptsToWin(1)}}</span>
-            <span>{{game.players[1].name}}</span>
+            <span ng-class="game.curPlayerIdx == 1 ? 'activePlayerName': 'passivePlayerName'">{{game.players[1].name}}</span>
             <span ng-show="game.curPlayerIdx == 1">*</span>
         </div>
 

@@ -1,3 +1,5 @@
+screen.orientation.lock('portrait');
+
 var apaApp = angular.module('apaApp', ['ngRoute','ui.bootstrap', 'LocalStorageModule']);
 apaApp.directive('onLongPress', function ($timeout) {
     return {
@@ -24,6 +26,19 @@ apaApp.directive('onLongPress', function ($timeout) {
         }
     }
 });
+apaApp.directive('selectOnClick', ['$window', function ($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('click', function () {
+                if (!$window.getSelection().toString()) {
+                    // Required for mobile Safari
+                    this.setSelectionRange(0, this.value.length)
+                }
+            });
+        }
+    };
+}]);
 
 var Command = function(execute, undo) {
     this.execute = execute;
