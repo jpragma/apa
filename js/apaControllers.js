@@ -44,7 +44,7 @@ apaApp.controller('9bRackController', function ($scope, Game9B, $location) {
         $scope.overrideBall = {idx: idx, value: $scope.rack.balls[idx]};
     };
     $scope.getBtnStyleSelected = function (val) {
-        return (val == $scope.overrideBall.value) ? {opacity:0.3} : null;
+        return (val === $scope.overrideBall?.value) ? {opacity:0.3} : null;
     };
     $scope.updateBall = function (idx, value) {
         var cmd = new UpdateBallValueCommand($scope.game, idx, value);
@@ -55,7 +55,7 @@ apaApp.controller('9bRackController', function ($scope, Game9B, $location) {
 
     $scope.getBallText = function (idx) {
         var txt = idx;
-        if ($scope.rack.balls[idx] == 99) {
+        if ($scope.rack.balls[idx] === 99) {
             txt += " (D)";
         } else if ($scope.rack.balls[idx] >= 1) {
             txt += " (" +  $scope.rack.balls[idx] + ")";
@@ -100,6 +100,7 @@ apaApp.controller('9bRackController', function ($scope, Game9B, $location) {
         if ($scope.game.isOver()) {
             $location.path("/9bResult");
         }
+        navigator.vibrate(100);
     };
     $scope.undo = function () {
         var cmd = $scope.rack.commands.pop();

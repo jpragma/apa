@@ -1,4 +1,10 @@
 screen.orientation.lock('portrait');
+window.addEventListener("beforeunload", function (e) {
+    var confirmationMessage = 'Confirm exit';
+
+    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
 
 var apaApp = angular.module('apaApp', ['ngRoute','ui.bootstrap', 'LocalStorageModule']);
 apaApp.directive('onLongPress', function ($timeout) {
